@@ -65,7 +65,7 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 cp .env.example .env   # optional; defaults work for local SQLite
-uvicorn main:app --reload --port 8000
+python -m uvicorn main:app --reload --port 8000
 ```
 
 - API base: `http://localhost:8000`
@@ -73,6 +73,8 @@ uvicorn main:app --reload --port 8000
 - On first start, tables are created and the DB is seeded if empty.
 
 **Demo account (seeded):**
+
+If you just want a quick trial without registering, click **"I already have an account"** on the landing page and log in with these credentials to try out the Japanese course immediately:
 
 | Field    | Value                 |
 |----------|-----------------------|
