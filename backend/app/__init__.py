@@ -1,0 +1,1 @@
+# LinguaPath Backend Application

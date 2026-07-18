@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   Design-token overrides for dark mode
+   Toggled by setting data-theme="dark" on <html>
+   ========================================================= */
+[data-theme='dark'] {
+  /* Surfaces */
+  --color-background:                    #111312;
+  --color-on-background:                 #e2e4e2;
+  --color-surface:                       #111312;
+  --color-surface-dim:                   #111312;
+  --color-surface-bright:                #353935;
+  --color-surface-container-lowest:      #0c0f0c;
+  --color-surface-container-low:         #191c19;
+  --color-surface-container:             #1d201d;
+  --color-surface-container-high:        #272b27;
+  --color-surface-container-highest:     #323532;
+  --color-on-surface:                    #e2e4e2;
+  --color-on-surface-variant:            #c0cab5;
+  --color-surface-variant:               #3f4a36;
+  --color-outline:                       #8a9b80;
+  /* Primary */
+  --color-primary:                       #6be026;
+  --color-on-primary:                    #082100;
+  --color-primary-container:             #1e5000;
+  --color-on-primary-container:          #87fe45;
+  /* Secondary */
+  --color-secondary:                     #88ceff;
+  --color-on-secondary:                  #001e2e;
+  --color-secondary-container:           #004c6e;
+  --color-on-secondary-container:        #c8e6ff;
+  /* Tertiary */
+  --color-tertiary:                      #f4bf00;
+  --color-on-tertiary:                   #241a00;
+  --color-tertiary-container:            #594400;
+  --color-on-tertiary-container:         #ffdf92;
+  /* Error */
+  --color-error:                         #ffb4ab;
+  --color-on-error:                      #690005;
+  --color-error-container:               #93000a;
+  --color-on-error-container:            #ffdad6;
+}
+
+/* Suppress flash of unstyled content during theme transitions */
+.no-transition * {
+  transition: none !important;
+}
+
+@layer base {
+  body {
+    background-color: theme('colors.background');
+    color: theme('colors.on-background');
+  }
+}
+
+@layer components {
+  .btn-3d-primary {
+    @apply border-b-4 border-[#46a302] transition-all duration-100 ease-in-out;
+  }
+  .btn-3d-primary:active:not(:disabled) {
+    @apply translate-y-[2px] border-b-0 mb-[4px];
+  }
+
+  .btn-3d-secondary {
+    @apply border-b-4 border-[#004c6e] transition-all duration-100 ease-in-out;
+  }
+  .btn-3d-secondary:active:not(:disabled) {
+    @apply translate-y-[2px] border-b-0 mb-[4px];
+  }
+
+  .btn-3d-neutral {
+    @apply border-b-4 border-[#dbd9d9] transition-all duration-100 ease-in-out;
+  }
+  .btn-3d-neutral:active:not(:disabled) {
+    @apply translate-y-[2px] border-b-0 mb-[4px];
+  }
+
+  .btn-3d-danger {
+    @apply border-b-4 border-[#93000a] transition-all duration-100 ease-in-out;
+  }
+  .btn-3d-danger:active:not(:disabled) {
+    @apply translate-y-[2px] border-b-0 mb-[4px];
+  }
+
+  .tile-3d {
+    @apply border-2 border-surface-container-highest border-b-4 border-b-surface-dim bg-white transition-all duration-100 ease-in-out;
+  }
+  
+  .tile-3d:active, .tile-3d.selected {
+    @apply translate-y-[2px] border-b-2 bg-secondary-fixed border-secondary;
+  }
+  
+  .tile-3d-disabled {
+    @apply border-2 border-surface-container-highest bg-surface-container-low text-on-surface-variant cursor-not-allowed opacity-50;
+  }
+  
+  .pulse-ring {
+    animation: pulse-ring-anim 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+}
+
+@keyframes pulse-ring-anim {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(88, 204, 2, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(88, 204, 2, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(88, 204, 2, 0); }
+}
