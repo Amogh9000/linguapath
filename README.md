@@ -126,7 +126,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000
                                                           linguapath.db
 ```
 
-### Design principles
+### Design principles & Assumptions
 
 | Area | Approach |
 |------|----------|
