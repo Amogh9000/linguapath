@@ -109,6 +109,32 @@ export default function LearnPage() {
         onStatsUpdate={(partial) => setStats((s) => (s ? { ...s, ...partial } : s))}
       />
 
+      {/* Mobile Top Bar */}
+      <div className="md:hidden sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b-2 border-surface-container-highest px-4 py-3 flex items-center justify-between shadow-sm">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest border-2 border-surface-container-highest flex items-center justify-center">
+            <span className="material-symbols-outlined text-on-surface-variant text-sm">flag</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-1 text-error font-bold">
+            <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
+            <span className="text-base">{stats.streak_count}</span>
+          </div>
+          <div className="flex items-center gap-1 font-bold">
+            <span className="material-symbols-outlined text-xl text-[#ddad00]" style={{ fontVariationSettings: "'FILL' 1" }}>monetization_on</span>
+            <span className="text-[#ddad00] text-base">{stats.gems}</span>
+          </div>
+          <button
+            onClick={() => setHeartsOpen(true)}
+            className={`flex items-center gap-1 font-bold ${stats.hearts_current === 0 ? 'animate-pulse' : ''}`}
+          >
+            <span className="material-symbols-outlined text-xl text-error" style={{ fontVariationSettings: stats.hearts_current === 0 ? "'FILL' 0" : "'FILL' 1" }}>favorite</span>
+            <span className="text-base text-error">{stats.hearts_current}</span>
+          </button>
+        </div>
+      </div>
+
       {/* Main Content Area */}
       <main className="md:ml-64 md:pt-8 min-h-screen pb-24 md:pb-0 relative">
         <div className="max-w-[1200px] mx-auto p-5 md:px-8 lg:px-16 flex flex-col lg:flex-row gap-8 relative">
