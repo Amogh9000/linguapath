@@ -59,8 +59,16 @@ export function SpeakButton({ text, lang = 'ja-JP' }: SpeakButtonProps) {
       utterance.voice = voice;
       console.log(`🗣️ Speaking with voice: ${voice.name} (${voice.lang})`);
     } else {
+      alert(`Missing language pack for ${lang}. Please install the Text-to-Speech language in your device settings.`);
       console.warn(`⚠️ No voice found for ${lang}. Ensure your OS has this language pack installed.`);
     }
+
+    utterance.onerror = (event) => {
+      console.error('SpeechSynthesis Utterance Error:', event);
+      if (event.error === 'not-allowed') {
+        alert('Audio playback blocked by browser. Make sure your volume is up and you tap the button directly.');
+      }
+    };
 
     // On some mobile Safari versions, cancel() immediately before speak() drops the audio.
     // We'll only cancel if it's currently speaking.
