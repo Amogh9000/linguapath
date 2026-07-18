@@ -1,6 +1,12 @@
 import * as T from './types';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const normalizeApiBaseUrl = (value: string | undefined) => {
+  const fallback = 'http://localhost:8000';
+  const rawUrl = (value || fallback).trim().replace(/\/+$/, '');
+  return rawUrl.endsWith('/api') ? rawUrl : `${rawUrl}/api`;
+};
+
+export const API_BASE_URL = normalizeApiBaseUrl(process.env.NEXT_PUBLIC_API_URL);
 
 const TOKEN_KEY = 'lp_token';
 
@@ -28,7 +34,7 @@ export const api = {
       headers.set('Authorization', `Bearer ${token}`);
     }
 
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
       ...options,
       headers,
     });

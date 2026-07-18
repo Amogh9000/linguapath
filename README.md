@@ -93,7 +93,7 @@ App: [http://localhost:3000](http://localhost:3000)
 `.env.local`:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8000/api
+NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
 ### 3. Typical local flow
@@ -328,7 +328,7 @@ Spanish (`es`), French (`fr`), Japanese (`ja`) — units, skills, lessons, and e
 
 1. Push the repo to GitHub.
 2. Import in [Vercel](https://vercel.com/new); set **Root Directory** to `frontend`.
-3. Env: `NEXT_PUBLIC_API_URL=https://your-api.example.com/api`
+3. Env: `NEXT_PUBLIC_API_URL=https://your-api.example.com`
 4. Host the FastAPI backend separately (Railway, Render, Fly.io, etc.).
 5. On the API host set:
 
