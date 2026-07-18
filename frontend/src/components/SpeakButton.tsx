@@ -59,8 +59,18 @@ export function SpeakButton({ text, lang = 'ja-JP' }: SpeakButtonProps) {
       utterance.voice = voice;
       console.log(`🗣️ Speaking with voice: ${voice.name} (${voice.lang})`);
     } else {
-      alert(`Missing language pack for ${lang}. Please install the Text-to-Speech language in your device settings.`);
-      console.warn(`⚠️ No voice found for ${lang}. Ensure your OS has this language pack installed.`);
+      console.warn(`⚠️ No native voice found for ${lang}. Falling back to network audio.`);
+      // Fallback to Google Translate TTS API for devices (like Samsung) missing the language pack
+      const fallbackUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${languageCode}&client=tw-ob`;
+      const audio = new Audio(fallbackUrl);
+      
+      audio.play().catch((err) => {
+        console.error('Fallback audio failed:', err);
+        alert(`Missing language pack for ${lang}. Please install the Text-to-Speech language in your device settings.`);
+      });
+      
+      // Exit early so we don't try to use the broken native synthesis
+      return;
     }
 
     utterance.onerror = (event) => {
