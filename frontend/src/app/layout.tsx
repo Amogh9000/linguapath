@@ -11,7 +11,7 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "LinguaPath",
+  title: "Wayspeak",
   description: "The free, fun, and effective way to learn a language!",
 };
 

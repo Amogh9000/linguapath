@@ -90,6 +90,7 @@ export interface ExerciseOut {
 export interface LessonStartResponse {
   session_id: number;
   exercises: ExerciseOut[];
+  course_language_code?: string;
 }
 
 export interface AnswerResponse {

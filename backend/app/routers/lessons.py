@@ -17,6 +17,7 @@ from sqlalchemy.orm import selectinload
 from app.core.database import get_db
 from app.deps import get_current_user
 from app.models import (
+    Course,
     Exercise,
     Lesson,
     LessonAnswer,
@@ -53,7 +54,10 @@ async def start_lesson(
     """
     result = await db.execute(
         select(Lesson)
-        .options(selectinload(Lesson.exercises))
+        .options(
+            selectinload(Lesson.exercises),
+            selectinload(Lesson.skill).selectinload(Skill.unit).selectinload(Unit.course)
+        )
         .where(Lesson.id == lesson_id)
     )
     lesson = result.scalar_one_or_none()
@@ -81,7 +85,11 @@ async def start_lesson(
         for ex in sorted(lesson.exercises, key=lambda e: e.order_index)
     ]
 
-    return LessonStartResponse(session_id=session.id, exercises=exercises_out)
+    return LessonStartResponse(
+        session_id=session.id, 
+        exercises=exercises_out,
+        course_language_code=lesson.skill.unit.course.language_code
+    )
 
 
 def _normalize(val):

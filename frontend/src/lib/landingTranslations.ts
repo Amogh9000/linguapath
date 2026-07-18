@@ -45,11 +45,11 @@ const enFooter: FooterColumn[] = [
   },
   {
     title: 'Products',
-    links: ['LinguaPath', 'LinguaPath for Schools', 'Super LinguaPath', 'Gift Super', 'Practice Hub'],
+    links: ['Wayspeak', 'Wayspeak for Schools', 'Super Wayspeak', 'Gift Super', 'Practice Hub'],
   },
   {
     title: 'Apps',
-    links: ['LinguaPath for Android', 'LinguaPath for iOS'],
+    links: ['Wayspeak for Android', 'Wayspeak for iOS'],
   },
   {
     title: 'Help and support',
@@ -85,7 +85,7 @@ export const landingTranslations: Record<SiteLang, LandingCopy> = {
       'Italian', 'Chinese', 'Russian', 'Arabic', 'Portuguese',
     ],
     footerColumns: enFooter,
-    copyright: '© 2026 LinguaPath Inc.',
+    copyright: '© 2026 Wayspeak Inc.',
   },
   Spanish: {
     siteLanguage: 'Idioma del sitio:',
@@ -107,13 +107,13 @@ export const landingTranslations: Record<SiteLang, LandingCopy> = {
     ],
     footerColumns: [
       { title: 'Sobre nosotros', links: ['Cursos', 'Misión', 'Método', 'Investigación', 'Empleo', 'Prensa', 'Contacto'] },
-      { title: 'Productos', links: ['LinguaPath', 'LinguaPath para Escuelas', 'Super LinguaPath', 'Regalar Super', 'Centro de práctica'] },
-      { title: 'Apps', links: ['LinguaPath para Android', 'LinguaPath para iOS'] },
+      { title: 'Productos', links: ['Wayspeak', 'Wayspeak para Escuelas', 'Super Wayspeak', 'Regalar Super', 'Centro de práctica'] },
+      { title: 'Apps', links: ['Wayspeak para Android', 'Wayspeak para iOS'] },
       { title: 'Ayuda', links: ['Preguntas frecuentes', 'FAQ escuelas', 'Estado'] },
       { title: 'Privacidad y términos', links: ['Normas de la comunidad', 'Términos', 'Privacidad'] },
       { title: 'Social', links: ['Blog', 'Instagram', 'TikTok', 'YouTube', 'X'] },
     ],
-    copyright: '© 2026 LinguaPath Inc.',
+    copyright: '© 2026 Wayspeak Inc.',
   },
   French: {
     siteLanguage: 'Langue du site :',
@@ -135,13 +135,13 @@ export const landingTranslations: Record<SiteLang, LandingCopy> = {
     ],
     footerColumns: [
       { title: 'À propos', links: ['Cours', 'Mission', 'Approche', 'Recherche', 'Carrières', 'Presse', 'Contact'] },
-      { title: 'Produits', links: ['LinguaPath', 'LinguaPath pour les écoles', 'Super LinguaPath', 'Offrir Super', 'Espace pratique'] },
-      { title: 'Apps', links: ['LinguaPath pour Android', 'LinguaPath pour iOS'] },
+      { title: 'Produits', links: ['Wayspeak', 'Wayspeak pour les écoles', 'Super Wayspeak', 'Offrir Super', 'Espace pratique'] },
+      { title: 'Apps', links: ['Wayspeak pour Android', 'Wayspeak pour iOS'] },
       { title: 'Aide', links: ['FAQ', 'FAQ écoles', 'Statut'] },
       { title: 'Confidentialité', links: ['Règles de la communauté', 'Conditions', 'Confidentialité'] },
       { title: 'Social', links: ['Blog', 'Instagram', 'TikTok', 'YouTube', 'X'] },
     ],
-    copyright: '© 2026 LinguaPath Inc.',
+    copyright: '© 2026 Wayspeak Inc.',
   },
   German: {
     siteLanguage: 'Seitensprache:',
@@ -163,13 +163,13 @@ export const landingTranslations: Record<SiteLang, LandingCopy> = {
     ],
     footerColumns: [
       { title: 'Über uns', links: ['Kurse', 'Mission', 'Ansatz', 'Forschung', 'Karriere', 'Presse', 'Kontakt'] },
-      { title: 'Produkte', links: ['LinguaPath', 'LinguaPath für Schulen', 'Super LinguaPath', 'Super verschenken', 'Übungszentrum'] },
-      { title: 'Apps', links: ['LinguaPath für Android', 'LinguaPath für iOS'] },
+      { title: 'Produkte', links: ['Wayspeak', 'Wayspeak für Schulen', 'Super Wayspeak', 'Super verschenken', 'Übungszentrum'] },
+      { title: 'Apps', links: ['Wayspeak für Android', 'Wayspeak für iOS'] },
       { title: 'Hilfe', links: ['FAQ', 'Schulen-FAQ', 'Status'] },
       { title: 'Datenschutz', links: ['Community-Richtlinien', 'AGB', 'Datenschutz'] },
       { title: 'Social', links: ['Blog', 'Instagram', 'TikTok', 'YouTube', 'X'] },
     ],
-    copyright: '© 2026 LinguaPath Inc.',
+    copyright: '© 2026 Wayspeak Inc.',
   },
   Japanese: {
     siteLanguage: 'サイトの言語：',
@@ -191,13 +191,13 @@ export const landingTranslations: Record<SiteLang, LandingCopy> = {
     ],
     footerColumns: [
       { title: '会社情報', links: ['コース', 'ミッション', '学習法', '研究', '採用', 'プレス', 'お問い合わせ'] },
-      { title: 'プロダクト', links: ['LinguaPath', '学校向け', 'Super LinguaPath', 'Superを贈る', '練習ハブ'] },
+      { title: 'プロダクト', links: ['Wayspeak', '学校向け', 'Super Wayspeak', 'Superを贈る', '練習ハブ'] },
       { title: 'アプリ', links: ['Android版', 'iOS版'] },
       { title: 'ヘルプ', links: ['よくある質問', '学校向けFAQ', 'ステータス'] },
       { title: 'プライバシー', links: ['コミュニティガイドライン', '利用規約', 'プライバシー'] },
       { title: 'ソーシャル', links: ['ブログ', 'Instagram', 'TikTok', 'YouTube', 'X'] },
     ],
-    copyright: '© 2026 LinguaPath Inc.',
+    copyright: '© 2026 Wayspeak Inc.',
   },
   Italian: {
     siteLanguage: 'Lingua del sito:',
@@ -219,13 +219,13 @@ export const landingTranslations: Record<SiteLang, LandingCopy> = {
     ],
     footerColumns: [
       { title: 'Chi siamo', links: ['Corsi', 'Missione', 'Approccio', 'Ricerca', 'Lavora con noi', 'Stampa', 'Contatti'] },
-      { title: 'Prodotti', links: ['LinguaPath', 'LinguaPath per le scuole', 'Super LinguaPath', 'Regala Super', 'Hub pratica'] },
-      { title: 'App', links: ['LinguaPath per Android', 'LinguaPath per iOS'] },
+      { title: 'Prodotti', links: ['Wayspeak', 'Wayspeak per le scuole', 'Super Wayspeak', 'Regala Super', 'Hub pratica'] },
+      { title: 'App', links: ['Wayspeak per Android', 'Wayspeak per iOS'] },
       { title: 'Aiuto', links: ['FAQ', 'FAQ scuole', 'Stato'] },
       { title: 'Privacy', links: ['Linee guida', 'Termini', 'Privacy'] },
       { title: 'Social', links: ['Blog', 'Instagram', 'TikTok', 'YouTube', 'X'] },
     ],
-    copyright: '© 2026 LinguaPath Inc.',
+    copyright: '© 2026 Wayspeak Inc.',
   },
   Portuguese: {
     siteLanguage: 'Idioma do site:',
@@ -247,12 +247,12 @@ export const landingTranslations: Record<SiteLang, LandingCopy> = {
     ],
     footerColumns: [
       { title: 'Sobre nós', links: ['Cursos', 'Missão', 'Método', 'Pesquisa', 'Carreiras', 'Imprensa', 'Contato'] },
-      { title: 'Produtos', links: ['LinguaPath', 'LinguaPath para escolas', 'Super LinguaPath', 'Presentear Super', 'Hub de prática'] },
-      { title: 'Apps', links: ['LinguaPath para Android', 'LinguaPath para iOS'] },
+      { title: 'Produtos', links: ['Wayspeak', 'Wayspeak para escolas', 'Super Wayspeak', 'Presentear Super', 'Hub de prática'] },
+      { title: 'Apps', links: ['Wayspeak para Android', 'Wayspeak para iOS'] },
       { title: 'Ajuda', links: ['FAQ', 'FAQ escolas', 'Status'] },
       { title: 'Privacidade', links: ['Diretrizes da comunidade', 'Termos', 'Privacidade'] },
       { title: 'Social', links: ['Blog', 'Instagram', 'TikTok', 'YouTube', 'X'] },
     ],
-    copyright: '© 2026 LinguaPath Inc.',
+    copyright: '© 2026 Wayspeak Inc.',
   },
 };

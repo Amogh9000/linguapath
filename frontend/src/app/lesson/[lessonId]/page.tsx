@@ -13,21 +13,27 @@ import * as T from '@/lib/types';
 import MatchPairs from '@/components/exercises/MatchPairs';
 import MultipleChoice from '@/components/exercises/MultipleChoice';
 import Translate from '@/components/exercises/Translate';
+import { getCourseLanguageLabel, getExerciseInstruction } from '@/components/exercises/exerciseCopy';
 
-const FillBlank = ({ exercise, onSelectAnswer }: any) => (
-  <Translate exercise={exercise} onSelectAnswer={onSelectAnswer} />
+const FillBlank = ({ exercise, onSelectAnswer, courseLanguageLabel }: any) => (
+  <Translate exercise={exercise} onSelectAnswer={onSelectAnswer} courseLanguageLabel={courseLanguageLabel} />
 );
-const TypeAnswer = ({ exercise, onSelectAnswer }: any) => (
+const TypeAnswer = ({ exercise, onSelectAnswer, courseLanguageLabel, courseLanguageCode }: any) => {
+  const instruction = getExerciseInstruction(exercise, courseLanguageLabel, courseLanguageCode);
+
+  return (
   <div className="flex flex-col gap-4">
-    <h1 className="text-2xl font-black">{exercise.prompt}</h1>
-    <input
-      autoFocus
-      className="w-full bg-surface border-2 border-surface-container-highest rounded-xl p-4 font-bold text-lg focus:border-secondary outline-none"
-      onChange={(e) => onSelectAnswer(e.target.value)}
-      placeholder="Type here in the correct language"
-    />
-  </div>
-);
+      <h1 className="text-2xl font-black">{exercise.prompt}</h1>
+      <p className="text-base font-semibold text-on-surface-variant">{instruction}</p>
+      <input
+        autoFocus
+        className="w-full bg-surface border-2 border-surface-container-highest rounded-xl p-4 font-bold text-lg focus:border-secondary outline-none"
+        onChange={(e) => onSelectAnswer(e.target.value)}
+        placeholder={`Type your ${courseLanguageLabel ?? 'course language'} answer here`}
+      />
+    </div>
+  );
+};
 
 type AvatarConfig = {
   outfit: string;
@@ -53,6 +59,8 @@ export default function LessonPlayer({ params }: { params: { lessonId: string } 
   }>({ status: null });
   const [showComplete, setShowComplete] = useState<any>(null);
   const [avatar, setAvatar] = useState<AvatarConfig>(DEFAULT_AVATAR);
+  const [courseLanguageLabel, setCourseLanguageLabel] = useState('the course language');
+  const [courseLanguageCode, setCourseLanguageCode] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     async function init() {
@@ -71,6 +79,8 @@ export default function LessonPlayer({ params }: { params: { lessonId: string } 
             color: cfg.color || 'Green',
           });
         }
+        setCourseLanguageCode(res.course_language_code);
+        setCourseLanguageLabel(getCourseLanguageLabel(res.course_language_code));
       } catch (err) {
         console.error(err);
         router.push('/learn');
@@ -83,7 +93,7 @@ export default function LessonPlayer({ params }: { params: { lessonId: string } 
   }, [params.lessonId]);
 
   if (loading || !store.sessionId) {
-    return <div className="h-screen flex items-center justify-center">Loading...</div>;
+    return <div className="min-h-[100dvh] flex items-center justify-center">Loading...</div>;
   }
 
   const exercise = store.exercises[store.currentIndex];
@@ -166,7 +176,7 @@ export default function LessonPlayer({ params }: { params: { lessonId: string } 
 
   if (showComplete) {
     return (
-      <div className="h-screen flex flex-col items-center justify-center p-6 bg-surface-container-lowest">
+      <div className="min-h-[100dvh] flex flex-col items-center justify-center p-6 bg-surface-container-lowest">
         <motion.div
           initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -211,7 +221,7 @@ export default function LessonPlayer({ params }: { params: { lessonId: string } 
     }[exercise?.type] || TypeAnswer;
 
   return (
-    <div className="h-screen flex flex-col bg-background overflow-hidden relative">
+    <div className="min-h-[100dvh] flex flex-col bg-background relative overflow-x-hidden">
       <header className="flex items-center justify-between px-5 py-4 bg-surface z-10 w-full max-w-[1200px] mx-auto">
         <button
           onClick={() => router.push('/learn')}
@@ -243,10 +253,10 @@ export default function LessonPlayer({ params }: { params: { lessonId: string } 
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-5 py-8 flex flex-col items-center justify-center w-full max-w-4xl mx-auto pb-28">
-        <div className="w-full flex flex-col md:flex-row gap-8 items-start justify-between h-full">
+      <main className="flex-1 px-4 sm:px-5 py-6 md:py-8 flex flex-col items-center justify-start md:justify-center w-full max-w-4xl mx-auto pb-40 md:pb-28">
+        <div className="w-full flex flex-col md:flex-row gap-6 md:gap-8 items-start justify-between h-full min-w-0">
           {/* Customized 2D mascot — matches profile choices, static */}
-          <div className="flex flex-col items-center justify-start w-full md:w-1/4 pt-2 md:pt-12 shrink-0">
+          <div className="flex flex-col items-center justify-start w-full md:w-1/4 pt-2 md:pt-12 shrink-0 order-1 md:order-none">
             <div className="w-28 h-28 md:w-48 md:h-48 flex items-center justify-center">
               <MascotAvatar
                 outfit={avatar.outfit}
@@ -269,7 +279,7 @@ export default function LessonPlayer({ params }: { params: { lessonId: string } 
             </div>
           </div>
 
-          <div className="w-full md:w-3/4 flex flex-col gap-6">
+          <div className="w-full md:w-3/4 flex flex-col gap-6 min-w-0 order-2 md:order-none pb-4 md:pb-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={exercise?.id}
@@ -283,6 +293,8 @@ export default function LessonPlayer({ params }: { params: { lessonId: string } 
                   exercise={exercise}
                   onSelectAnswer={setCurrentAnswer}
                   currentAnswer={currentAnswer}
+                  courseLanguageLabel={courseLanguageLabel}
+                  courseLanguageCode={courseLanguageCode}
                 />
               </motion.div>
             </AnimatePresence>

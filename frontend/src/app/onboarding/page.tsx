@@ -63,13 +63,13 @@ export default function OnboardingPage() {
   };
 
   return (
-    <div className="bg-background text-on-background min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <div className="bg-background text-on-background min-h-[100dvh] flex flex-col items-center justify-center overflow-x-hidden">
       <div className="fixed top-0 left-0 right-0 h-16 flex items-center justify-center z-50 bg-background/80 backdrop-blur-sm border-b-2 border-surface-container-highest">
-        <h1 className="text-2xl text-primary font-black">LinguaPath</h1>
+        <h1 className="text-2xl text-primary font-black">Wayspeak</h1>
       </div>
 
-      <main className="w-full max-w-[1200px] mx-auto flex-grow flex flex-col justify-center pt-16 pb-24 px-5 relative h-screen">
-        <div className="flex-grow flex items-center justify-center w-full relative overflow-hidden">
+      <main className="w-full max-w-[1200px] mx-auto flex-grow flex flex-col justify-center pt-16 pb-28 px-5 relative min-h-[100dvh]">
+        <div className="flex-grow flex items-center justify-center w-full relative">
           
           <AnimatePresence initial={false} custom={1} mode="wait">
             {step === 1 && (

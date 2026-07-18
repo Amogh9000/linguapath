@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { api } from '@/lib/api';
 import Link from 'next/link';
 import { playClick } from '@/lib/sounds';
+import MascotAvatar from '@/components/MascotAvatar';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -57,14 +58,12 @@ export default function LoginPage() {
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-primary-container rounded-full opacity-25 blur-2xl"></div>
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary-container rounded-full opacity-25 blur-3xl"></div>
           
-          <img 
-            alt="LinguaPath Mascot Logo" 
-            className="w-56 h-56 object-contain mb-8 z-10 drop-shadow-md hover:scale-105 transition-transform" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDelpsM3xCjFXaqy6iA5RbBdzdJXl_n7rxkWcIpUfsOjyOJMbD9i5YFOWVhrDOk6GQK2iw4MBFVb1Zt-Vzs1gR3ulQ6qfYLjLFmUSurQCKy1ULxY5rQKorh1AE8md09sRxIxha6hSsXv0PnawG3I7BlYXDHJnQcxt9il7EfllJkHpTd9R8rh-i_e2ygKCIsy31M1o-QHRVMq9HYKyOJyd5CaCOw85I4izNtjFmIB55u_NA2WG0sU8Rk"
-          />
+          <div className="w-56 h-56 mb-8 z-10 drop-shadow-md hover:scale-105 transition-transform">
+            <MascotAvatar color="Green" size={224} className="w-full h-full" />
+          </div>
           <Link href="/">
             <h1 className="text-4xl font-black text-primary mb-2 z-10 cursor-pointer">
-              LinguaPath
+              Wayspeak
             </h1>
           </Link>
           <p className="text-lg font-bold text-on-surface-variant z-10 max-w-[80%] leading-relaxed">
@@ -82,7 +81,7 @@ export default function LoginPage() {
 
           <div className="text-center md:hidden mb-8 mt-8">
             <Link href="/">
-              <h1 className="text-3xl font-black text-primary mb-2">LinguaPath</h1>
+              <h1 className="text-3xl font-black text-primary mb-2">Wayspeak</h1>
             </Link>
           </div>
 

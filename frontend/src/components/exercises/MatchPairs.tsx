@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { SpeakButton } from '../SpeakButton';
+import { getExerciseInstruction, getSpeechLanguage } from './exerciseCopy';
 
 interface MatchPairsProps {
   exercise: any;
   onSelectAnswer: (answer: any) => void;
+  courseLanguageLabel?: string;
 }
 
-export default function MatchPairs({ exercise, onSelectAnswer }: MatchPairsProps) {
+export default function MatchPairs({ exercise, onSelectAnswer, courseLanguageLabel }: MatchPairsProps) {
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
   const [matchedPairs, setMatchedPairs] = useState<Record<string, string>>({});
@@ -16,6 +18,8 @@ export default function MatchPairs({ exercise, onSelectAnswer }: MatchPairsProps
   const optionsList = Array.isArray(exercise.options) ? exercise.options : [];
   const leftWords = optionsList.map((opt: any) => opt.left);
   const rightWords = optionsList.map((opt: any) => opt.right);
+  const instruction = getExerciseInstruction(exercise, courseLanguageLabel);
+  const speechLang = getSpeechLanguage(courseLanguageLabel);
 
   const [shuffledLeft, setShuffledLeft] = useState<string[]>([]);
   const [shuffledRight, setShuffledRight] = useState<string[]>([]);
@@ -89,6 +93,10 @@ export default function MatchPairs({ exercise, onSelectAnswer }: MatchPairsProps
         {exercise.prompt || 'Match the pairs'}
       </h1>
 
+      <p className="text-base md:text-lg font-semibold text-on-surface-variant -mt-2">
+        {instruction}
+      </p>
+
       <div className="grid grid-cols-2 gap-4">
         {/* Left Column */}
         <div className="flex flex-col gap-3">
@@ -129,7 +137,7 @@ export default function MatchPairs({ exercise, onSelectAnswer }: MatchPairsProps
                   } ${isMatched ? 'opacity-50 bg-surface-container-highest pointer-events-none' : ''}`}
               >
                 <span className="font-bold text-lg flex items-center gap-2">
-                  {!isMatched && <SpeakButton text={word} />}
+                  {!isMatched && <SpeakButton text={word} lang={speechLang} />}
                   {word}
                 </span>
               </div>

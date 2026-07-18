@@ -3,11 +3,14 @@
 import { useState } from 'react';
 import { SpeakButton } from '../SpeakButton';
 import { motion, LayoutGroup } from 'framer-motion';
+import { getExerciseInstruction, getSpeechLanguage } from './exerciseCopy';
 
-export default function Translate({ exercise, onSelectAnswer }: { exercise: any, onSelectAnswer: (answer: string) => void }) {
+export default function Translate({ exercise, onSelectAnswer, courseLanguageLabel }: { exercise: any, onSelectAnswer: (answer: string) => void, courseLanguageLabel?: string }) {
   const options: string[] = exercise.options || [];
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
   const [availableWords, setAvailableWords] = useState<string[]>(options);
+  const instruction = getExerciseInstruction(exercise, courseLanguageLabel);
+  const speechLang = getSpeechLanguage(courseLanguageLabel);
 
   const handleSelect = (word: string) => {
     setAvailableWords(prev => prev.filter(w => w !== word));
@@ -33,9 +36,13 @@ export default function Translate({ exercise, onSelectAnswer }: { exercise: any,
         {exercise.prompt}
       </h1>
 
+      <p className="text-base md:text-lg font-semibold text-on-surface-variant -mt-2">
+        {instruction}
+      </p>
+
       {exercise.audio_text && (
         <div className="flex items-center gap-4 mb-4 bg-surface p-4 rounded-xl border-2 border-surface-container-highest w-max">
-          <SpeakButton text={exercise.audio_text} />
+          <SpeakButton text={exercise.audio_text} lang={speechLang} />
           <span className="font-bold text-lg">{exercise.audio_text}</span>
         </div>
       )}
@@ -78,7 +85,7 @@ export default function Translate({ exercise, onSelectAnswer }: { exercise: any,
             autoFocus
             className="w-full bg-surface-container-lowest border-2 border-surface-container-highest rounded-xl p-4 font-bold text-lg text-on-surface focus:border-primary focus:bg-primary-container/10 transition-colors outline-none min-h-[120px] resize-none" 
             onChange={e => onSelectAnswer(e.target.value)} 
-            placeholder="Type your translation here..." 
+            placeholder={`Type your ${courseLanguageLabel ?? 'course language'} answer here...`}
           />
         </div>
       )}

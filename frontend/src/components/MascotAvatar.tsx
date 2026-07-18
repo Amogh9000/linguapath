@@ -2,7 +2,7 @@
 
 import { useId } from 'react';
 
-/** Shared LinguaPath owl colors — hex for SVG fills */
+/** Shared Wayspeak owl colors — hex for SVG fills */
 export const MASCOT_COLORS: Record<string, { fill: string; dark: string; label: string }> = {
   Green: { fill: '#58cc02', dark: '#46a302', label: 'Green' },
   Blue: { fill: '#1cb0f6', dark: '#1899d6', label: 'Blue' },

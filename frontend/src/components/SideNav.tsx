@@ -85,7 +85,7 @@ export default function SideNav({ active, courseName, onStatsUpdate }: SideNavPr
       <nav className="hidden md:flex fixed left-0 top-0 h-full w-64 border-r-2 border-surface-container-highest bg-surface flex-col p-5 gap-2 z-50">
         <div className="flex flex-col items-center mb-8 mt-4">
           <Link href="/learn">
-            <h1 className="text-3xl text-primary font-black cursor-pointer">LinguaPath</h1>
+            <h1 className="text-3xl text-primary font-black cursor-pointer">Wayspeak</h1>
           </Link>
           {courseName && (
             <p className="text-on-surface-variant text-sm font-bold uppercase tracking-wider mt-1">

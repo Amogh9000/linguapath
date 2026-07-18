@@ -169,6 +169,7 @@ class ExerciseOut(BaseModel):
 class LessonStartResponse(BaseModel):
     session_id: int
     exercises: list[ExerciseOut]
+    course_language_code: str | None = None
 
 
 class AnswerRequest(BaseModel):

@@ -7,6 +7,7 @@ import { GlobalLoader } from '@/components/GlobalLoader';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import MascotAvatar from '@/components/MascotAvatar';
 import {
   SITE_LANGUAGES,
   SiteLang,
@@ -98,13 +99,11 @@ export default function LandingPage() {
 
       <header className="w-full flex justify-between items-center px-5 md:px-12 lg:px-16 py-3 bg-white border-b-2 border-gray-100 fixed top-0 left-0 right-0 z-50">
         <Link href="/" className="flex items-center gap-2 group" onClick={playClick}>
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDelpsM3xCjFXaqy6iA5RbBdzdJXl_n7rxkWcIpUfsOjyOJMbD9i5YFOWVhrDOk6GQK2iw4MBFVb1Zt-Vzs1gR3ulQ6qfYLjLFmUSurQCKy1ULxY5rQKorh1AE8md09sRxIxha6hSsXv0PnawG3I7BlYXDHJnQcxt9il7EfllJkHpTd9R8rh-i_e2ygKCIsy31M1o-QHRVMq9HYKyOJyd5CaCOw85I4izNtjFmIB55u_NA2WG0sU8Rk"
-            alt=""
-            className="w-10 h-10 object-contain group-hover:scale-110 transition-transform"
-          />
-          <span className="text-2xl md:text-3xl text-[#58cc02] font-black tracking-tight lowercase">
-            linguapath
+          <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <MascotAvatar color="Green" size={48} className="w-full h-full" />
+          </div>
+          <span className="text-2xl md:text-3xl text-[#58cc02] font-black tracking-tight">
+            Wayspeak
           </span>
         </Link>
         <Link
@@ -125,7 +124,7 @@ export default function LandingPage() {
             transition={{ duration: 0.8, type: 'spring' }}
             className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left gap-8 order-2 md:order-1"
           >
-            <h1 className="text-5xl md:text-7xl font-extrabold text-on-surface leading-[1.1] tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-extrabold text-[#3c3c3c] leading-[1.1] tracking-tight">
               {t.headline}
             </h1>
             <div className="flex flex-col gap-4 w-full max-w-sm mt-4 relative">
@@ -146,11 +145,9 @@ export default function LandingPage() {
             className="w-full md:w-1/2 flex justify-center order-1 md:order-2 relative"
           >
             <div className="absolute inset-0 bg-primary-container blur-3xl opacity-20 rounded-full w-3/4 h-3/4 m-auto"></div>
-            <img 
-              alt="LinguaPath 3D Mascot" 
-              className="w-72 h-72 md:w-[450px] md:h-[450px] object-contain animate-float drop-shadow-[0_25px_35px_rgba(0,0,0,0.25)] relative z-10" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDelpsM3xCjFXaqy6iA5RbBdzdJXl_n7rxkWcIpUfsOjyOJMbD9i5YFOWVhrDOk6GQK2iw4MBFVb1Zt-Vzs1gR3ulQ6qfYLjLFmUSurQCKy1ULxY5rQKorh1AE8md09sRxIxha6hSsXv0PnawG3I7BlYXDHJnQcxt9il7EfllJkHpTd9R8rh-i_e2ygKCIsy31M1o-QHRVMq9HYKyOJyd5CaCOw85I4izNtjFmIB55u_NA2WG0sU8Rk" 
-            />
+            <div className="relative z-10 animate-float">
+              <MascotAvatar color="Green" size={420} className="w-72 h-72 md:w-[450px] md:h-[450px] drop-shadow-[0_25px_35px_rgba(0,0,0,0.25)]" />
+            </div>
           </motion.div>
         </section>
 

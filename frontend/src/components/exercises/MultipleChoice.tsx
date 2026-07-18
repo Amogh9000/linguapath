@@ -1,15 +1,19 @@
 'use client';
 
 import { SpeakButton } from '../SpeakButton';
+import { getExerciseInstruction, getSpeechLanguage } from './exerciseCopy';
 
 interface MultipleChoiceProps {
   exercise: any;
   onSelectAnswer: (answer: string) => void;
   currentAnswer: string | null;
+  courseLanguageLabel?: string;
 }
 
-export default function MultipleChoice({ exercise, onSelectAnswer, currentAnswer }: MultipleChoiceProps) {
+export default function MultipleChoice({ exercise, onSelectAnswer, currentAnswer, courseLanguageLabel }: MultipleChoiceProps) {
   const options: string[] = exercise.options || [];
+  const instruction = getExerciseInstruction(exercise, courseLanguageLabel);
+  const speechLang = getSpeechLanguage(courseLanguageLabel);
 
   return (
     <div className="w-full flex flex-col gap-6 items-center">
@@ -17,9 +21,13 @@ export default function MultipleChoice({ exercise, onSelectAnswer, currentAnswer
         {exercise.prompt}
       </h1>
 
+      <p className="text-base md:text-lg font-semibold text-on-surface-variant text-center -mt-4">
+        {instruction}
+      </p>
+
       {exercise.audio_text && (
         <div className="mb-4">
-          <SpeakButton text={exercise.audio_text} />
+          <SpeakButton text={exercise.audio_text} lang={speechLang} />
         </div>
       )}
 
