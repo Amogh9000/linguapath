@@ -48,9 +48,12 @@ export function SpeakButton({ text, lang = 'ja-JP' }: SpeakButtonProps) {
     const normalizedLang = lang.toLowerCase();
     const languageCode = normalizedLang.split('-')[0];
 
-    // Search the pre-loaded state array instead of calling getVoices() here
-    const voice = voices.find((item) => item.lang.toLowerCase() === normalizedLang)
-      ?? voices.find((item) => item.lang.toLowerCase().startsWith(languageCode));
+    // Some mobile browsers have an empty voices array at mount, so we fetch it again here
+    const currentVoices = synth.getVoices();
+    const availableVoices = currentVoices.length > 0 ? currentVoices : voices;
+
+    const voice = availableVoices.find((item) => item.lang.toLowerCase() === normalizedLang)
+      ?? availableVoices.find((item) => item.lang.toLowerCase().startsWith(languageCode));
 
     if (voice) {
       utterance.voice = voice;
@@ -59,7 +62,9 @@ export function SpeakButton({ text, lang = 'ja-JP' }: SpeakButtonProps) {
       console.warn(`⚠️ No voice found for ${lang}. Ensure your OS has this language pack installed.`);
     }
 
-    if (synth.speaking || synth.pending) {
+    // On some mobile Safari versions, cancel() immediately before speak() drops the audio.
+    // We'll only cancel if it's currently speaking.
+    if (synth.speaking) {
       synth.cancel();
     }
 
