@@ -58,10 +58,7 @@ app = FastAPI(
 # ---------------------------------------------------------------------------
 ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://localhost:3001",
     "http://127.0.0.1:3000",
-    "http://127.0.0.1:3001",
-    "https://linguapath-kappa.vercel.app",
 ]
 
 _extra = os.getenv("CORS_ORIGINS", "").strip()
@@ -70,9 +67,14 @@ if _extra:
         origin.strip() for origin in _extra.split(",") if origin.strip()
     )
 
+
+def is_allowed_origin(origin: str) -> bool:
+    return origin in ALLOWED_ORIGINS or origin.startswith("https://linguapath") and origin.endswith(".vercel.app")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
+    allow_origin_regex=r"https://linguapath.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -88,7 +90,7 @@ app.add_middleware(
 async def global_exception_handler(request: Request, exc: Exception):
     origin = request.headers.get("origin", "")
     headers = {}
-    if origin in ALLOWED_ORIGINS:
+    if is_allowed_origin(origin):
         headers["Access-Control-Allow-Origin"] = origin
         headers["Access-Control-Allow-Credentials"] = "true"
     return JSONResponse(
