@@ -101,6 +101,15 @@ export default function LearnPage() {
   const myRank = leaderboard?.current_user_rank;
   const rankMedal = ['🥇','🥈','🥉'];
 
+  const getFlagEmoji = (code: string) => {
+    switch (code) {
+      case 'es': return '🇪🇸';
+      case 'fr': return '🇫🇷';
+      case 'ja': return '🇯🇵';
+      default: return '🌐';
+    }
+  };
+
   return (
     <div className="bg-surface-container-lowest text-on-background font-sans min-h-screen">
       <SideNav
@@ -112,8 +121,8 @@ export default function LearnPage() {
       {/* Mobile Top Bar */}
       <div className="md:hidden sticky top-0 z-40 bg-surface/95 backdrop-blur-md border-b-2 border-surface-container-highest px-4 py-3 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest border-2 border-surface-container-highest flex items-center justify-center">
-            <span className="material-symbols-outlined text-on-surface-variant text-sm">flag</span>
+          <div className="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest border-2 border-surface-container-highest flex items-center justify-center text-lg">
+            {getFlagEmoji(pathData.language_code)}
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -149,9 +158,9 @@ export default function LearnPage() {
             
             {/* Stats Row */}
             <div className="flex items-center justify-between px-2 mb-2">
-              <div className="flex items-center gap-2 cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-colors">
-                <div className="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest border-2 border-surface-container-highest flex items-center justify-center">
-                  <span className="material-symbols-outlined text-on-surface-variant text-sm">flag</span>
+              <div className="flex items-center gap-2 cursor-pointer hover:bg-surface-container-low p-2 rounded-xl transition-colors" title="Change Course">
+                <div className="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest border-2 border-surface-container-highest flex items-center justify-center text-lg">
+                  {getFlagEmoji(pathData.language_code)}
                 </div>
               </div>
               {/* Streak */}
