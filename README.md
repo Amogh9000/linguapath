@@ -1,4 +1,4 @@
-# LinguaPath
+# LinguaPath (Now known as WaySpeak)
 
 Gamified language-learning app inspired by Duolingo. Users learn Spanish, French, or Japanese through a skill path, arcade-style UI, hearts/coins economy, leaderboards, and a customizable 2D owl mascot.
 
