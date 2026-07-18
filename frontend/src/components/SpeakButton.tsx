@@ -63,9 +63,7 @@ export function SpeakButton({ text, lang = 'ja-JP' }: SpeakButtonProps) {
       synth.cancel();
     }
 
-    setTimeout(() => {
-      synth.speak(utterance);
-    }, 50);
+    synth.speak(utterance);
   };
 
   return (
